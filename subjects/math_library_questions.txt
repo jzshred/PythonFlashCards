@@ -1,0 +1,34 @@
+Import the math library.
+Using the math library, round up a float called 'num'.
+Using the math library, round down a float called 'num'.
+Using the math library, return the number of ways to choose 'k' items from 'n' items without repetition or order.
+Using the math library, return the factorial of 'num'.
+Using the math library, return the greatest common divisor of 8 and 12.
+Using the math library, check if the values 'a' and 'b' are close to each other.
+Using the math library, check if the number 'num' is finite.
+Using the math library, check if 'num' is positive or negative infinity.
+Using the math library, check if 'x' is not a number.
+Using the math library, return the least common multiple of 8 and 12.
+Using the math library, return the number of ways to choose 'k' items from 'n' items without repetition and with order.
+Using the math library, calculate the product of all the elements in the iterable 'nums'.
+Using the math library, return e raised to the power of 'x'.
+Using the math library, return the natural logarithm of 'x'.
+Using the math library, return the base-10 logarithm of 'x'.
+Using the math library, return 'x' to the power of 'y'.
+Using the math library, return the square root of 'x'.
+Using the math library, return the cube root of 'x'.
+Using the math library, return the cosine of 'x' radians.
+Using the math library, return the sine of 'x' radians.
+Using the math library, return the tangent of 'x' radians.
+Using the math library, return the arc cosine of 'x', in radians.
+Using the math library, return the arc sine of 'x', in radians.
+Using the math library, return the arc tangent of 'x', in radians.
+Using the math library, return the Euclidean distance between two points 'p' and 'q'.
+Using the math library, convert angle 'x' from radians to degrees.
+Using the math library, convert angle 'x' from degrees to radians.
+Using the math library, return the mathematical constant pi.
+Using the math library, return the mathematical constant e.
+Using the math library, return the mathematical constant tau.
+Using the math library, return positive infinity.
+Using the math library, return negative infinity.
+Using the math library, return 'not-a-number'.

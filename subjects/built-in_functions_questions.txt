@@ -1,0 +1,39 @@
+Check the type of the variable 'num'.
+Convert the variable 'num' to an integer.
+Convert the variable 'num' to a float.
+Raise 2 to the power of 3 with the '*' operator.
+Raise 2 to the power of 3 with a built-in function.
+Perform integer division of 4.5 between 2.
+Round the float 'num' to 2 decimal places.
+Round the int 'num' to multiples of 10.
+Return the absolute value of the number 'num'.
+Convert the integer (base-10) 'num' to binary (base-2).
+Convert the integer (base-10) 'num' to octal (base-8).
+Convert the integer (base-10) 'num' to hexadecimal (base-16).
+Input the complex number '2+3j'.
+Return True if all items in the iterable 'test' are true.
+Return True if any item in the iterable 'test' is true.
+Return the boolean value of the object 'test'.
+Return the character from the Unicode code represented by the integer 65.
+Return a tuple with the quotient and remainder when 5 is divided by 2.
+Return an enumerate object from an iterable 'test'.
+Evaluate a string containing a Python expression called 'x'.
+Execute a block of code contained in the string 'x'.
+Filter the iterable 'test' through the function 'fx'.
+Execute the built-in help system.
+Ask the user for input.
+Check if 'x' is an instance of type 'int'.
+Create an iterator object from the list 'test'.
+Create a reverse iterator object from the list 'test'.
+Return the next item in the iterator 'y'.
+Return the length of the object 'test'.
+Return the largest item in the iterable 'test'.
+Return the smallest item in the iterable 'test'.
+Return the integer that represents the character 'h'.
+Print the string 'test' to the standard output.
+Create a sequence of numbers from 0 to 3.
+Create a sequence of numbers from 3 to 5.
+Create a sequence of numbers from 3 to 9, incrementing by 3.
+Create a slice object that returns the first eight elements in an iterable, stepping by 2.
+Return the sum of the items in the iterable 'test'.
+Return the combination of two iterables 'x' and 'y'.

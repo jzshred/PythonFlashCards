@@ -1,0 +1,4 @@
+Open the file 'readme.txt' in read mode.
+Open the file 'readme.txt' in append mode.
+Open the file 'readme.txt' in write mode.
+Open the file 'readme.txt' in create mode.

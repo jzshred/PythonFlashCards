@@ -1,0 +1,14 @@
+Create a dictionary called 'capitals' with the key-value pairs ak-juneau and al-montgomery
+Remove all elements from the dictionary 'capitals'.
+Return a copy of the dictionary 'capitals'.
+Return a dictionary with an iterable 'x' specifying the keys, and 'y' specifying the values for all keys.
+Return a view of all key-value pairs from the dictionary 'cars'.
+Return a view of all keys from the dictionary 'cars'.
+Return a view of all values from the dictionary 'cars'.
+Return the value from the key 'model' from the dictionary 'cars'.
+Return the value from the key 'year' from the dictionary 'cars'. Return the string 'key not found' if the key is not part of the dictionary.
+Remove the item with key 'brand' from the dictionary 'cars' and return its value.
+Remove the item with key 'brand' from the dictionary 'cars' and return its value. Return the string 'key not found' if the key is not part of the dictionary.
+Return a tuple with the item that was last inserted into the dictionary 'cars'.
+Set the value from key 'model' to 'bronco' if the key does not exist in the dictionary 'cars'.
+Insert the key 'color' with value 'white' into the dictionary 'cars'.

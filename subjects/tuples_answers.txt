@@ -1,0 +1,4 @@
+('a', 'b', 'c')
+tuple(test)
+test.count(5)
+test.index(8)

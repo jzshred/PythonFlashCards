@@ -1,0 +1,3 @@
+dir(obj)
+isinstance(x, Test)
+issubclass(Child, Parent)

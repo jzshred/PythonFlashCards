@@ -1,0 +1,21 @@
+Return a set from the characters 'a', 'b', 'c'.
+Return a set from the iterable 'test'
+Return a frozenset object from the list 'test'.
+Add the element 'orange' to the set 'fruits'.
+Remove all elements in the set 'fruits'.
+Return a copy of the set 'fruits'.
+Return the items that are exclusive to set 'x' when comparing it to set 'y'.
+Remove the items from set 'x' that appear in set 'y'.
+Remove the item 'banana' from the set 'fruits'. Do not raise an error if the item is not part of the set.
+Remove the item 'banana' from the set 'fruits'. Raise an error if the item is not part of the set.
+Remove a random item from the set 'fruits'.
+Return the intersection between sets 'x' and 'y'.
+Return the intersection between sets 'x', 'y' and 'z'.
+Update the set 'x' so it contains only the items that intersect with sets 'y' and 'z'.
+Check if the set 'x' is a subset of 'y'.
+Check if the set 'x' is a superset of 'y'.
+Check if the items from set 'x' are not present in set 'y'.
+Return a set with the items that do not intersect between sets 'x' and 'y'.
+Update the set 'x' so it contains the items from 'x' and 'y' which do not intersect.
+Return the union between sets 'x', 'y' and 'z'.
+Update the set 'x' with items from the iterable 'y'.

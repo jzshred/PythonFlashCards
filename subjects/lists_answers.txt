@@ -1,0 +1,28 @@
+['a', 'b', 'c']
+list(test)
+vowels.append('u')
+vowels.insert(0, 'a')
+letters[-1] = 'y'
+fruits.extend(cars)
+airports.remove('sea')
+del airports[2]
+airports.pop()
+airports.pop(0)
+airports.clear()
+states[2:4]
+states[:3]
+states[-3:]
+states.copy()
+fruits.count("cherry")
+fruits.index("cherry")
+for country in countries: print(f"{country}")
+for country in countries[:2]: print(f"{country}")
+sorted(vowels)
+sorted(vowels, reverse=True)
+vowels.sort()
+vowels.sort(reverse=True)
+vowels.reverse()
+nums = list(range(5))
+odds = list((range(1, 10, 2))
+nums = [10**exp for exp in range(5)]
+states_lower = [state.lower() for state in states]

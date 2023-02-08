@@ -1,0 +1,4 @@
+open("readme.txt", 'r')
+open("readme.txt", 'a')
+open("readme.txt", 'w')
+open("readme.txt", 'x')

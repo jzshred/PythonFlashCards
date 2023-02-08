@@ -1,0 +1,14 @@
+capitals = {"ak": "juneau", "al": "montgomery"}
+capitals.clear()
+capitals.copy()
+dict.fromkeys(x, y)
+cars.items()
+cars.keys()
+cars.values()
+cars["model"]
+cars.get("year", "key not found")
+cars.pop("brand")
+cars.pop("brand", "key not found")
+cars.popitem()
+cars.setdefault("model","bronco")
+cars.update({"color": "white"})

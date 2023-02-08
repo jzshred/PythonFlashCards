@@ -1,0 +1,28 @@
+Return a list from the characters 'a', 'b', 'c'.
+Return a list from the iterable 'test'.
+Add the character 'u' to the end of the list 'vowels'.
+Insert the character 'a' to the beginning of the list 'vowels'.
+Change the last element of the list 'letters' to 'y'.
+Add the elements of the iterable 'cars' to the end of the list 'fruits'.
+Remove the first iteration of 'sea' from the list 'airports'.
+Delete the third element in the list 'airports'.
+Remove and return the last element in the list 'airports'.
+Remove and return the first element in the list 'airports'.
+Remove all elements from the list 'airports'.
+Return the third and fourth elements from the list 'states'.
+Return the first three elements from the list 'states'.
+Return the last three elements from the list 'states'.
+Return a shallow copy of the list 'states'.
+Return the number of times the string 'cherry' appears in the list 'fruits'.
+Return the position of the first occurrence of the string 'cherry' in the list 'fruits'.
+Loop through all countries in the list 'countries' and print each one.
+Loop through the first two elements in the list 'countries' and print each one.
+Return a copy of the list 'vowels' in ascending sorted order.
+Return a copy of the list 'vowels' in descending sorted order.
+Sort the list 'vowels' in ascending order.
+Sort the list 'vowels' in descending order.
+Reverse the order of the elements in the list 'vowels'.
+Create a list of numbers from 0 to 4, called 'nums', using the 'range' function.
+Create a list of numbers from 1 to 9, called 'odds', skipping every even number.
+Using list comprehension, create a list called 'nums' with the powers of 10 from 1 to 10000.
+Using list comprehension, create a list called 'states_lower' with lowercase names of the elements in 'states'.

@@ -1,0 +1,3 @@
+Return a list of the properties and methods of object 'obj'.
+Check if 'x' is an instance of class 'Test'.
+Check if class 'Child' is a subclass of 'Parent'.

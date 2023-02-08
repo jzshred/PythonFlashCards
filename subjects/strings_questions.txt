@@ -1,0 +1,59 @@
+Convert the number 3.5 into a string.
+Center the string variable 'x' between 20 characters.
+Center the string variable 'x' between 20 '-' characters.
+Return the number of times the value 'apple' appears in the string 'test'.
+Return the number of times the value 'apple' appears in the string 'test' between characters 10 to 24.
+Change the case of a string called 'name' to uppercase.
+Change the string 'name' to lowercase.
+Change the string 'name' to lowercase considering unicode characters.
+Change the string 'name' so only the first letter is uppercase.
+Change to uppercase all the first letters from the string 'name'.
+On string 'name', change uppercase to lowercase and vice versa.
+Check if string 'name' is uppercase.
+Check if string 'name' is lowercase.
+Check if string 'name' is titlecase.
+Check if all characters in string 'txt' are alphanumeric.
+Check if all characters in string 'txt' are in the alphabet.
+Check if all characters in string 'txt' are ascii characters.
+Check if the string 'txt' is a valid identifier. A valid identifier only contains alphanumeric characters and underscores. It cannot start with a number or contain any spaces.
+Check if all characters in string 'txt' are numeric. Include base 10 numbers but exclude fractions, superscripts and roman numerals.
+Check if all characters in string 'txt' are numeric. Include base 10 numbers, fractions and superscripts. Exclude roman numerals.
+Check if all characters in string 'txt' are numeric. Include base 10 numbers, fractions, superscripts and roman numerals.
+Check if all characters in string 'txt' are whitespaces.
+Check if all characters in string 'txt' are printable.
+Remove whitespaces on the left of string 'name'.
+Remove whitespaces on the right of string 'name'.
+Remove whitespaces on both sides of string 'name'.
+Check if the string 'txt' starts with 'Hello'.
+Check if the string 'txt' ends with 'World!'.
+Find the first occurrence of the word 'welcome' in the string 'txt'. Return -1 if the word is not found.
+Find the first occurrence of the word 'welcome' in the string 'txt'. Raise an exception if the word is not found.
+Find the last occurrence of the word 'welcome' in the string 'txt'. Return -1 if the word is not found.
+Find the last occurrence of the word 'welcome' in the string 'txt'. Raise an exception if the word is not found.
+Set the tab size to 5 whitespaces in the string 'txt'.
+Use the separator '#' to join all elements from the iterable 'test'.
+Return a 20 characters long, left justified version of the string 'txt'.
+Return a 20 characters long, left justified version of the string 'txt'. Fill whitespaces with the character 'x'.
+Return a 20 characters long, right justified version of the string 'txt'.
+Return a 20 characters long, right justified version of the string 'txt'. Fill whitespaces with the character 'x'.
+For the string 'test', return a mapping table which will replace the characters in string 'x' with the characters in string 'y'.
+For the string 'test', return a mapping table which will replace the characters in string 'x' with the characters in string 'y', and remove the characters in string 'z'.
+Replace characters in the string 'test' based on the mapping table 'table'.
+Replace the word 'bananas' with 'apples' in the string 'txt'.
+Replace only the first two occurrences of the word 'one' with 'two' in the string 'txt'.
+Return a tuple with all characters before the first occurrence of 'x', 'x', and all characters after 'x' from the string 'txt'.
+Return a tuple with all characters before the last occurrence of 'xyz', 'xyz', and all characters after 'xyz' from the string 'txt'.
+Return a list where each item is a line from the string 'txt'. Do not keep the new line escape character in the items.
+Return a list where each item is a line from the string 'txt'. Keep the new line escape character in each item.
+Split the string 'test' into a list where each word separated by a whitespace is an item.
+Split the string 'test' into a list where each word separated by a comma is an item.
+Split the string 'test' into a list where words separated by a dot are an item in the list. Split only the first two occurrences of the dot.
+Split the string 'test' into a list where words separated by a dot are an item in the list. Split only the last two occurrences of the dot.
+Fill the string 'test' with zeros at the beginning, until it is 10 characters long.
+Insert variable 'user' in a string using f-string (Python 3.6 onward).
+Insert variable 'user' in a string using .format (Python 3.5 and earlier).
+Format the number 'x' to be right aligned within 10 character spaces, with scientific notation showing 2 decimal places.
+Format the number 'x' to be center aligned within 10 spaces, separate thousands with the character '_', and show 2 decimal places.
+Format the number 'x' to be left aligned within 10 spaces, fill the empty spaces with the character '*', separate thousands with the character ',' and show 2 decimal places.
+Format the integer 'x' to show its corresponding unicode character.
+Format the number 'x' to be shown as a percentage value with 4 decimal places, and a '+' sign if positive.
