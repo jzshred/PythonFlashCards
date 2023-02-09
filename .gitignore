@@ -1,0 +1,7 @@
+# Files ignored
+/PythonFlashCards.docx
+
+# Folders ignored
+.idea/
+__pycache__/
+
