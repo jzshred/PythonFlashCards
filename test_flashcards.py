@@ -15,14 +15,14 @@ def cardset():
 
 
 @pytest.fixture()
-def cardset_with_subject_qa_session(cardset):
+def cardset_with_subject(cardset):
     """Return a Flashcard object with built answers."""
     cardset._Flashcard__chosen_subject = 0
-    cardset._Flashcard__build_qa_session()
+    cardset._Flashcard__build_subject_qa_session()
     return cardset
 
 
-def test_choose_subject(cardset, monkeypatch):
+def test_choose_subject_valid_subject(cardset, monkeypatch):
     """Test a valid input for the Q&A subject."""
     chosen_subject = 1
     monkeypatch.setattr("builtins.input", lambda: chosen_subject)
@@ -30,20 +30,19 @@ def test_choose_subject(cardset, monkeypatch):
     assert cardset._Flashcard__chosen_subject == 0
 
 
-def test_display_subject_title(cardset, capsys):
-    """Test that the correct subject title is displayed."""
-    cardset._Flashcard__chosen_subject = 0
-    cardset._Flashcard__display_subject_title()
-    stdout, stderr = capsys.readouterr()
-    assert stdout == "\n--- Built-in functions ---\n"
+def test_choose_subject_quit_session(cardset, monkeypatch):
+    """Test quitting the Q&A session from the subject selection."""
+    chosen_subject = 'q'
+    monkeypatch.setattr("builtins.input", lambda: chosen_subject)
+    cardset._Flashcard__choose_subject()
+    assert cardset._Flashcard__quit_session
 
 
-def test_subject_qa_length(cardset):
+def test_build_subject_qa_session(cardset):
     """Test that each subject's questions and answers match in length."""
     for i in range(len(cardset._Flashcard__subjects) - 1):
         cardset._Flashcard__chosen_subject = i
-        cardset._Flashcard__build_subject_questions()
-        cardset._Flashcard__build_subject_answers()
+        cardset._Flashcard__build_subject_qa_session()
         assert len(cardset._Flashcard__subject_questions) == \
                len(cardset._Flashcard__subject_answers)
 
@@ -54,30 +53,76 @@ def test_choose_random_subject(cardset):
     assert cardset._Flashcard__chosen_subject in range(cardset._Flashcard__random_subject)
 
 
-def test_choose_random_question_number(cardset_with_subject_qa_session):
+def test_choose_random_question_number(cardset_with_subject):
     """Test that the chosen question number is within the range of available questions."""
-    cardset_with_subject_qa_session._Flashcard__choose_random_question_number()
-    assert cardset_with_subject_qa_session._Flashcard__random_question_number \
-        in range(len(cardset_with_subject_qa_session._Flashcard__subject_questions))
+    cardset_with_subject._Flashcard__choose_random_question_number()
+    assert cardset_with_subject._Flashcard__random_question_number \
+           in range(len(cardset_with_subject._Flashcard__subject_questions))
 
 
 def test_build_random_qa_session_questions(cardset):
     """Test that the random Q&A session gets created with the correct number of questions."""
     cardset._Flashcard__build_random_qa_session()
-    assert len(cardset._Flashcard__subject_questions) == cardset._Flashcard__total_random_questions
+    assert len(cardset._Flashcard__subject_questions) == cardset._Flashcard__number_of_random_questions
 
 
 def test_build_random_qa_session_answers(cardset):
     """Test that the random Q&A session gets created with the correct number of answers."""
     cardset._Flashcard__build_random_qa_session()
-    assert len(cardset._Flashcard__subject_answers) == cardset._Flashcard__total_random_questions
+    assert len(cardset._Flashcard__subject_answers) == cardset._Flashcard__number_of_random_questions
+
+
+def test_set_number_of_subject_questions_subject(cardset_with_subject):
+    """Test that the correct number of questions is set for a particular subject."""
+    cardset_with_subject._Flashcard__set_number_of_subject_questions()
+    assert cardset_with_subject._Flashcard__number_of_subject_questions \
+           == len(cardset_with_subject._Flashcard__subject_questions)
+
+
+def test_set_number_of_subject_questions_random(cardset):
+    """Test that the correct number of questions is set for the random subject."""
+    cardset._Flashcard__chosen_subject = cardset._Flashcard__random_subject
+    cardset._Flashcard__set_number_of_subject_questions()
+    assert cardset._Flashcard__number_of_subject_questions == cardset._Flashcard__number_of_random_questions
+
+
+def test_display_subject_title_subject(cardset_with_subject, capsys):
+    """Test that the correct subject title is displayed."""
+    cardset_with_subject._Flashcard__display_subject_title()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == (f"\n--- "
+                      f"{cardset_with_subject._Flashcard__subjects[cardset_with_subject._Flashcard__chosen_subject]}: "
+                      f"{cardset_with_subject._Flashcard__number_of_subject_questions} questions ---\n")
+
+
+def test_display_subject_title_random(cardset, capsys):
+    """Test that the random subject title is displayed."""
+    cardset._Flashcard__chosen_subject = cardset._Flashcard__random_subject
+    cardset._Flashcard__display_subject_title()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == (f"\n--- "
+                      f"{cardset._Flashcard__subjects[cardset._Flashcard__random_subject]}: "
+                      f"{cardset._Flashcard__number_of_random_questions} questions ---\n")
 
 
 @pytest.mark.parametrize("mock_answer, expected_result",
                          [("type(num)", "correct"), ('q', "quit"), ('a', "incorrect")])
-def test_check_answer(cardset_with_subject_qa_session, monkeypatch, mock_answer, expected_result):
+def test_check_answer(cardset_with_subject, monkeypatch, mock_answer, expected_result):
+    question_number = 0
     monkeypatch.setattr("builtins.input", lambda: mock_answer)
-    assert cardset_with_subject_qa_session._Flashcard__check_answer(0) == expected_result
+    assert cardset_with_subject._Flashcard__check_answer(question_number) == expected_result
+
+
+def test_compute_score_correct_answer(cardset):
+    response = "correct"
+    cardset._Flashcard__compute_score(response)
+    assert cardset._Flashcard__correct_answers == 1
+
+
+def test_compute_score_incorrect_answer(cardset):
+    response = "incorrect"
+    cardset._Flashcard__compute_score(response)
+    assert cardset._Flashcard__incorrect_answers == 1
 
 
 def test_display_score(cardset, capsys):
