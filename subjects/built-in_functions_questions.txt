@@ -19,7 +19,7 @@ Return a tuple with the quotient and remainder when 5 is divided by 2.
 Return an enumerate object from an iterable 'test'.
 Evaluate a string containing a Python expression called 'x'.
 Execute a block of code contained in the string 'x'.
-Filter the iterable 'test' through the function 'fx'.
+Filter the iterable 'letters' through the function 'check_vowels'.
 Execute the built-in help system.
 Ask the user for input.
 Check if 'x' is an instance of type 'int'.
