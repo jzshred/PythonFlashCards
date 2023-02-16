@@ -4,13 +4,11 @@ from random import randrange
 
 
 def test_randrange():
-    """Test imported function randrange from random module."""
     assert randrange(1) == 0
 
 
 @pytest.fixture()
 def cardset():
-    """Return a Flashcard object."""
     return Flashcard()
 
 
@@ -22,16 +20,14 @@ def cardset_with_subject(cardset):
     return cardset
 
 
-def test_choose_subject_valid_subject(cardset, monkeypatch):
-    """Test a valid input for the Q&A subject."""
+def test_choose_subject_case_valid_subject(cardset, monkeypatch):
     chosen_subject = 1
     monkeypatch.setattr("builtins.input", lambda: chosen_subject)
     cardset._Flashcard__choose_subject()
     assert cardset._Flashcard__chosen_subject == 0
 
 
-def test_choose_subject_quit_session(cardset, monkeypatch):
-    """Test quitting the Q&A session from the subject selection."""
+def test_choose_subject_case_quit_session(cardset, monkeypatch):
     chosen_subject = 'q'
     monkeypatch.setattr("builtins.input", lambda: chosen_subject)
     cardset._Flashcard__choose_subject()
@@ -72,31 +68,27 @@ def test_build_random_qa_session_answers(cardset):
     assert len(cardset._Flashcard__subject_answers) == cardset._Flashcard__number_of_random_questions
 
 
-def test_set_number_of_subject_questions_subject(cardset_with_subject):
-    """Test that the correct number of questions is set for a particular subject."""
-    cardset_with_subject._Flashcard__set_number_of_subject_questions()
-    assert cardset_with_subject._Flashcard__number_of_subject_questions \
+def test_set_number_of_questions_in_subject_case_subject(cardset_with_subject):
+    cardset_with_subject._Flashcard__set_number_of_questions_in_subject()
+    assert cardset_with_subject._Flashcard__number_of_questions_in_subject \
            == len(cardset_with_subject._Flashcard__subject_questions)
 
 
-def test_set_number_of_subject_questions_random(cardset):
-    """Test that the correct number of questions is set for the random subject."""
+def test_set_number_of_questions_in_subject_case_random(cardset):
     cardset._Flashcard__chosen_subject = cardset._Flashcard__random_subject
-    cardset._Flashcard__set_number_of_subject_questions()
-    assert cardset._Flashcard__number_of_subject_questions == cardset._Flashcard__number_of_random_questions
+    cardset._Flashcard__set_number_of_questions_in_subject()
+    assert cardset._Flashcard__number_of_questions_in_subject == cardset._Flashcard__number_of_random_questions
 
 
-def test_display_subject_title_subject(cardset_with_subject, capsys):
-    """Test that the correct subject title is displayed."""
+def test_display_subject_title_case_subject(cardset_with_subject, capsys):
     cardset_with_subject._Flashcard__display_subject_title()
     stdout, stderr = capsys.readouterr()
     assert stdout == (f"\n--- "
                       f"{cardset_with_subject._Flashcard__subjects[cardset_with_subject._Flashcard__chosen_subject]}: "
-                      f"{cardset_with_subject._Flashcard__number_of_subject_questions} questions ---\n")
+                      f"{cardset_with_subject._Flashcard__number_of_questions_in_subject} questions ---\n")
 
 
-def test_display_subject_title_random(cardset, capsys):
-    """Test that the random subject title is displayed."""
+def test_display_subject_title_case_random(cardset, capsys):
     cardset._Flashcard__chosen_subject = cardset._Flashcard__random_subject
     cardset._Flashcard__display_subject_title()
     stdout, stderr = capsys.readouterr()
@@ -113,13 +105,13 @@ def test_check_answer(cardset_with_subject, monkeypatch, mock_answer, expected_r
     assert cardset_with_subject._Flashcard__check_answer(question_number) == expected_result
 
 
-def test_compute_score_correct_answer(cardset):
+def test_compute_score_case_correct_answer(cardset):
     response = "correct"
     cardset._Flashcard__compute_score(response)
     assert cardset._Flashcard__correct_answers == 1
 
 
-def test_compute_score_incorrect_answer(cardset):
+def test_compute_score_case_incorrect_answer(cardset):
     response = "incorrect"
     cardset._Flashcard__compute_score(response)
     assert cardset._Flashcard__incorrect_answers == 1
