@@ -40,12 +40,11 @@ class Flashcard:
     def __display_intro(self):
         if not self.__intro_displayed:
             title_length = 35
-            print("=" * title_length)
+            banner = "=" * title_length
             title = "Python Q&A Session"
+            print(banner)
             print(title.center(title_length))
-            version = "v.3.0.3"
-            print(version.center(title_length))
-            print("=" * title_length)
+            print(banner)
             self.__intro_displayed = True
 
     def __display_subjects(self):
@@ -166,15 +165,22 @@ class Flashcard:
 
     def __check_answer(self, question_number):
         answer = input()
-        if answer == self.__subject_answers[question_number][:-1]:
+        answer_without_whitespaces = self.__remove_whitespaces(answer)
+        correct_answer = self.__subject_answers[question_number][:-1]
+        correct_answer_without_whitespaces = self.__remove_whitespaces(correct_answer)
+        if answer_without_whitespaces == correct_answer_without_whitespaces:
             print("Correct!")
             return "correct"
         elif answer.lower() == 'q':
             return "quit"
         else:
             print("Incorrect. The correct answer is:")
-            print(self.__subject_answers[question_number][:-1])
+            print(correct_answer)
             return "incorrect"
+
+    @staticmethod
+    def __remove_whitespaces(text):
+        return text.replace(" ", "")
 
     def __compute_score(self, response):
         if response == "correct":

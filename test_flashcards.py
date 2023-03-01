@@ -97,8 +97,14 @@ def test_display_subject_title_case_random(cardset, capsys):
                       f"{cardset._Flashcard__number_of_random_questions} questions ---\n")
 
 
+def test_remove_whitespaces(cardset):
+    answer = "(a, b, c)"
+    answer_without_whitespaces = cardset._Flashcard__remove_whitespaces(answer)
+    assert answer_without_whitespaces == "(a,b,c)"
+
+
 @pytest.mark.parametrize("mock_answer, expected_result",
-                         [("type(num)", "correct"), ('q', "quit"), ('a', "incorrect")])
+                         [("type(num)", "correct"), ("type ( num ) ", "correct"), ('q', "quit"), ('a', "incorrect")])
 def test_check_answer(cardset_with_subject, monkeypatch, mock_answer, expected_result):
     question_number = 0
     monkeypatch.setattr("builtins.input", lambda: mock_answer)
