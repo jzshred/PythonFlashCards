@@ -9,33 +9,33 @@ class RandomSubject:
         self.questions = []
         self.answers = []
 
-        self.__chosen_subject = None
-        self.__subject_qa = None
-        self.__random_question_number = None
+        self._chosen_subject = None
+        self._subject_qa = None
+        self._random_question_number = None
 
-        self.__build_random_qa(subjects, total_questions)
+        self._set_random_qa(subjects, total_questions)
 
-    def __choose_random_subject(self, subjects):
-        self.__chosen_subject = subjects[randrange(len(subjects))]
+    def _set_random_subject(self, subjects):
+        self._chosen_subject = subjects[randrange(len(subjects))]
 
-    def __build_subject_qa(self):
-        self.__subject_qa = Subject(self.__chosen_subject)
+    def _set_subject_qa(self):
+        self._subject_qa = Subject(self._chosen_subject)
 
-    def __choose_random_question_number(self):
-        self.__random_question_number = randrange(len(self.__subject_qa.questions))
+    def _set_random_question_number(self):
+        self._random_question_number = randrange(len(self._subject_qa.questions))
 
-    def __add_random_question(self):
-        if self.__subject_qa.questions[self.__random_question_number] not in self.questions:
-            self.questions.append(self.__subject_qa.questions[self.__random_question_number])
+    def _set_random_question(self):
+        if self._subject_qa.questions[self._random_question_number] not in self.questions:
+            self.questions.append(self._subject_qa.questions[self._random_question_number])
 
-    def __add_random_answer(self):
-        if self.__subject_qa.answers[self.__random_question_number] not in self.answers:
-            self.answers.append(self.__subject_qa.answers[self.__random_question_number])
+    def _set_random_answer(self):
+        if self._subject_qa.answers[self._random_question_number] not in self.answers:
+            self.answers.append(self._subject_qa.answers[self._random_question_number])
 
-    def __build_random_qa(self, subjects, total_questions):
+    def _set_random_qa(self, subjects, total_questions):
         while len(self.questions) < total_questions:
-            self.__choose_random_subject(subjects)
-            self.__build_subject_qa()
-            self.__choose_random_question_number()
-            self.__add_random_question()
-            self.__add_random_answer()
+            self._set_random_subject(subjects)
+            self._set_subject_qa()
+            self._set_random_question_number()
+            self._set_random_question()
+            self._set_random_answer()
