@@ -1,10 +1,5 @@
 import pytest
 from flashcards import Flashcard
-from random import randrange
-
-
-def test_randrange():
-    assert randrange(1) == 0
 
 
 @pytest.fixture()
@@ -34,7 +29,7 @@ def test_choose_subject_case_quit_session(cardset, monkeypatch):
     assert cardset._Flashcard__quit_session
 
 
-def test_build_subject_qa_session(cardset):
+def test_build_subject_qa_session_case_length(cardset):
     """Test that each subject's questions and answers match in length."""
     for i in range(len(cardset._Flashcard__subjects) - 1):
         cardset._Flashcard__chosen_subject = i

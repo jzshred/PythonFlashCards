@@ -1,4 +1,5 @@
 from random import randrange
+from subject import Subject
 
 
 class Flashcard:
@@ -85,15 +86,14 @@ class Flashcard:
             self.__build_subject_qa_session()
 
     def __build_subject_qa_session(self):
-        self.__clear_subject_qa_session()
-        self.__build_subject_questions()
-        self.__build_subject_answers()
-
-    def __clear_subject_qa_session(self):
-        self.__subject_questions.clear()
-        self.__subject_answers.clear()
+        # TODO: refactor
+        chosen_subject = self.__subjects_folder + self.__subjects[self.__chosen_subject].lower().replace(' ', '_')
+        subject_qa = Subject(chosen_subject)
+        self.__subject_questions = subject_qa.questions
+        self.__subject_answers = subject_qa.answers
 
     def __build_subject_questions(self):
+        # TODO: delete this method
         filename = self.__subjects_folder \
             + self.__subjects[self.__chosen_subject].lower().replace(' ', '_') \
             + "_questions.txt"
@@ -101,6 +101,7 @@ class Flashcard:
             self.__subject_questions = file_object.readlines()
 
     def __build_subject_answers(self):
+        # TODO: delete this method
         filename = self.__subjects_folder\
             + self.__subjects[self.__chosen_subject].lower().replace(' ', '_')\
             + "_answers.txt"
