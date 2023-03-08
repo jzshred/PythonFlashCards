@@ -8,16 +8,15 @@ class Flashcard:
     def __init__(self):
         self._subjects_folder = "subjects/"
         self._subjects = ["Built-in Functions", "Strings", "Lists", "Dictionaries", "Tuples", "Sets",
-                          "Functions", "Classes", "File Handling", "Math Library"]
-        self._random_subject_number = len(self._subjects) + 1
-        self._chosen_subject_number = None
+                          "Functions", "Classes", "File Handling", "Math Library", "Random Questions"]
+        self._chosen_subject = None
         self._chosen_subject_address = None
         self._questions = []
         self._answers = []
-        self._correct_answers = 0
-        self._incorrect_answers = 0
         self._intro_displayed = False
         self._quit_session = False
+        self._correct_answers = 0
+        self._incorrect_answers = 0
 
     def start(self):
         if not self._quit_session:
@@ -25,6 +24,7 @@ class Flashcard:
             self._display_subjects()
             self._choose_subject()
             if not self._quit_session:
+                self._parse_address()
                 self._build_qa_session()
                 self._display_subject_title()
                 self._ask_questions()
@@ -46,7 +46,6 @@ class Flashcard:
         print("Choose your subject:")
         for i, j in enumerate(self._subjects):
             print(f"{(i + 1):>2}. {j}")
-        print(f"{self._random_subject_number:>2}. Random Questions")
         print("On any question, input 'q' to quit.")
 
     def _choose_subject(self):
@@ -57,21 +56,11 @@ class Flashcard:
             self._check_quit_session(chosen_subject)
 
     def _check_valid_subject(self, chosen_subject):
-        self._chosen_subject_number = int(chosen_subject)
-        if 1 <= self._chosen_subject_number <= self._random_subject_number:
-            self._parse_address()
+        chosen_subject = int(chosen_subject) - 1
+        if chosen_subject in range(len(self._subjects)):
+            self._chosen_subject = self._subjects[chosen_subject]
         else:
             self._invalid_subject()
-
-    def _parse_address(self):
-        if self._chosen_subject_number == self._random_subject_number:
-            self._chosen_subject_address = []
-            for subject in self._subjects:
-                parsed_subject = f"{self._subjects_folder}{subject.lower().replace(' ', '_')}"
-                self._chosen_subject_address.append(parsed_subject)
-        else:
-            self._chosen_subject_address = \
-                f"{self._subjects_folder}{self._subjects[self._chosen_subject_number - 1].lower().replace(' ', '_')}"
 
     def _check_quit_session(self, chosen_subject):
         if chosen_subject.lower() == 'q':
@@ -84,8 +73,18 @@ class Flashcard:
         print("Invalid option. Please choose again.")
         self._choose_subject()
 
+    def _parse_address(self):
+        if self._chosen_subject == "Random Questions":
+            self._chosen_subject_address = []
+            for subject in self._subjects[:-1]:
+                parsed_subject = f"{self._subjects_folder}{subject.lower().replace(' ', '_')}"
+                self._chosen_subject_address.append(parsed_subject)
+        else:
+            self._chosen_subject_address = \
+                f"{self._subjects_folder}{self._chosen_subject.lower().replace(' ', '_')}"
+
     def _build_qa_session(self):
-        if self._chosen_subject_number == self._random_subject_number:
+        if self._chosen_subject == "Random Questions":
             qa_session = RandomSubject(self._chosen_subject_address)
         else:
             qa_session = Subject(self._chosen_subject_address)
@@ -93,11 +92,7 @@ class Flashcard:
         self._answers = qa_session.answers
 
     def _display_subject_title(self):
-        if self._chosen_subject_number == self._random_subject_number:
-            title = "Random Questions"
-        else:
-            title = self._subjects[self._chosen_subject_number - 1]
-        print(f"\n--- {title}: {len(self._questions)} questions ---")
+        print(f"\n--- {self._chosen_subject}: {len(self._questions)} questions ---")
 
     def _ask_questions(self):
         for question_number, question in enumerate(self._questions):
