@@ -110,13 +110,13 @@ class Flashcard:
         correct_answer = self._answers[question_number][:-1]
         correct_answer_without_whitespaces = self._remove_whitespaces(correct_answer)
         if answer_without_whitespaces == correct_answer_without_whitespaces:
-            print("Correct!")
+            print("Correct!\n")
             return "correct"
         elif answer.lower() == 'q':
             return "quit"
         else:
             print("Incorrect. The correct answer is:")
-            print(correct_answer)
+            print(correct_answer, "\n")
             return "incorrect"
 
     @staticmethod
