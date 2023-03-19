@@ -6,7 +6,7 @@ class Flashcard:
     """A class for running Python Q&A sessions."""
 
     def __init__(self):
-        self._subjects_folder = "subjects/"
+        self._subjects_folder = "../subjects/"
         self._subjects = ["Built-in Functions", "Strings", "Lists", "Dictionaries", "Tuples", "Sets",
                           "Functions", "Classes", "File Handling", "Math Library", "Random Questions"]
         self._chosen_subject = None
@@ -14,23 +14,22 @@ class Flashcard:
         self._questions = []
         self._answers = []
         self._intro_displayed = False
-        self._quit_session = False
+        self._active_session = True
         self._correct_answers = 0
         self._incorrect_answers = 0
 
     def start(self):
-        if not self._quit_session:
+        while self._active_session:
             self._display_intro()
             self._display_subjects()
             self._choose_subject()
-            if not self._quit_session:
+            if self._active_session:
                 self._parse_address()
                 self._build_qa_session()
                 self._display_subject_title()
                 self._ask_questions()
                 self._display_score()
                 self._ask_to_continue()
-                self.start()
 
     def _display_intro(self):
         if not self._intro_displayed:
@@ -49,29 +48,25 @@ class Flashcard:
         print("On any question, input 'q' to quit.")
 
     def _choose_subject(self):
-        chosen_subject = input()
-        try:
-            self._check_valid_subject(chosen_subject)
-        except ValueError:
-            self._check_quit_session(chosen_subject)
+        while self._active_session and self._chosen_subject is None:
+            chosen_subject = input()
+            try:
+                self._check_valid_subject(chosen_subject)
+            except ValueError:
+                self._check_quit_session(chosen_subject)
+
+            if self._active_session and self._chosen_subject is None:
+                print("Invalid option. Please choose again.")
 
     def _check_valid_subject(self, chosen_subject):
         chosen_subject = int(chosen_subject) - 1
         if chosen_subject in range(len(self._subjects)):
             self._chosen_subject = self._subjects[chosen_subject]
-        else:
-            self._invalid_subject()
 
     def _check_quit_session(self, chosen_subject):
         if chosen_subject.lower() == 'q':
             self._display_score()
-            self._quit_session = True
-        else:
-            self._invalid_subject()
-
-    def _invalid_subject(self):
-        print("Invalid option. Please choose again.")
-        self._choose_subject()
+            self._active_session = False
 
     def _parse_address(self):
         if self._chosen_subject == "Random Questions":
@@ -99,7 +94,7 @@ class Flashcard:
             print(f"Q{question_number + 1}. {question[:-1]}")
             response = self._check_answer(question_number)
             if response == "quit":
-                self._quit_session = True
+                self._active_session = False
                 break
             else:
                 self._compute_score(response)
@@ -115,8 +110,7 @@ class Flashcard:
         elif answer.lower() == 'q':
             return "quit"
         else:
-            print("Incorrect. The correct answer is:")
-            print(correct_answer, "\n")
+            print(f"Incorrect. The correct answer is:\n{correct_answer}\n")
             return "incorrect"
 
     @staticmethod
@@ -132,15 +126,17 @@ class Flashcard:
     def _display_score(self):
         total_answers = self._correct_answers + self._incorrect_answers
         if total_answers > 0:
-            print("\n--- Results ---")
+            print("--- Results ---")
             print(f"Correct answers: {self._correct_answers}")
             print(f"Incorrect answers: {self._incorrect_answers}")
             accuracy = self._correct_answers / total_answers
             print(f"Accuracy rate: {accuracy:.2%}")
 
     def _ask_to_continue(self):
-        if not self._quit_session:
+        if self._active_session:
             print("\nWould you like to continue with another subject? (y/n)")
             continue_with_qa = input()
-            if continue_with_qa.lower() != 'y':
-                self._quit_session = True
+            if continue_with_qa.lower() == 'y':
+                self._chosen_subject = None
+            else:
+                self._active_session = False

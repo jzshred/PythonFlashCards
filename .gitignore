@@ -1,7 +1,7 @@
 # Files ignored
 /PythonFlashCards.docx
+.coverage
 
 # Folders ignored
 .idea/
 __pycache__/
-
