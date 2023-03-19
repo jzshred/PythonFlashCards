@@ -6,26 +6,29 @@ The user chooses a Python subject and will be asked questions about methods for 
 
 ### Instructions
 
-You can clone this repository locally and start working on the project. The main files are:
+You can clone this repository locally and start working on the project. The main files are located in the _src_ folder:
 - _qa.py_: script the user runs to start the Q&A session.
 - _flashcards.py_: contains the class for handling the Q&A session.
-- _test_flashcards.py_: tests to check that the methods in _flashcards.py_ run correctly.
 - _subject.py_: contains the class for holding questions and answers from a particular subject.
+- _random_subject.py_: contains the class for holding questions and answers from random subjects.
+
+All tests are located in the _tests_ folder:
+- _test_flashcards.py_: tests to check that the methods in _flashcards.py_ run correctly.
 - _test_subject.py_: tests to check that the methods in _subject.py_ run correctly. 
+- _test_random_subject.py_: tests to check that the methods in _random_subject.py_ run correctly. 
 
-All testing requires __pytest__ version 7.2.1 or above.
+Testing requires __pytest__ version 7.2.1 or above, __pytest-cov__ version 4.0.0 or above,
+and __pytest-mock__ version 3.10.0 or above.
 
-There is a folder named _subjects_, which contains a _questions_ and an _answers_ text file for every Python subject included in this project.
-
-To add a question and its answer, simply add them in the corresponding text files.
-
-To add a subject, create two text files in the _subjects_ folder with the subject name followed by _questions_ and _answers_. Example: new_subject_questions.txt and new_subject_answers.txt. Then, add the subject title in the subjects list included in the constructor of the Flashcard class found in _flashcards.py_.
+There is a folder named _subjects_, which contains a _questions_ text file and an _answers_ text file for every Python subject included in this project.
 
 To clone the repository:<br>
-git clone https://github.com/jzshred/PythonFlashCards.git
+- git clone https://github.com/jzshred/PythonFlashCards.git
 
-To install pytest:<br>
-pip install pytest
+To install the required packages for testing:<br>
+- pip install pytest<br>
+- pip install pytest-cov<br>
+- pip install pytest-mock
 
 ### Contributing
 
