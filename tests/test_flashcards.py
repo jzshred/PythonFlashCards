@@ -157,22 +157,22 @@ def test_ask_questions(flashcard, mocker):
                           ('a', "incorrect", "Incorrect. The correct answer is:\nanswer 1\n")])
 def test_check_answer(flashcard, mocker, mock_answer, expected_return, expected_print):
     mock_input = mocker.patch("builtins.input", return_value=mock_answer)
-    mock_remove_whitespaces = mocker.patch.object(flashcard, '_remove_whitespaces',
+    mock_parse_answer = mocker.patch.object(flashcard, '_parse_answer',
                                                   side_effect=[mock_answer, "answer1"])
     question_number = 0
     flashcard._answers = ["answer 1\n", "answer 2\n", "answer 3\n"]
     mock_print = mocker.patch("builtins.print")
     assert flashcard._check_answer(question_number) == expected_return
     assert mock_input.call_count == 1
-    assert mock_remove_whitespaces.call_count == 2
+    assert mock_parse_answer.call_count == 2
     if expected_print is not None:
         mock_print.assert_called_once_with(expected_print)
 
 
-def test_remove_whitespaces(flashcard):
-    answer = "(a, b, c)"
-    answer_without_whitespaces = flashcard._remove_whitespaces(answer)
-    assert answer_without_whitespaces == "(a,b,c)"
+def test_parse_answer(flashcard):
+    answer = "a, 'b', c"
+    parsed_answer = flashcard._parse_answer(answer)
+    assert parsed_answer == "a,\"b\",c"
 
 
 @pytest.mark.parametrize("answer, expected_correct_answers, expected_incorrect_answers",

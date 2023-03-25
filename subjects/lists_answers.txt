@@ -22,7 +22,7 @@ sorted(vowels, reverse=True)
 vowels.sort()
 vowels.sort(reverse=True)
 vowels.reverse()
-nums = list(range(5))
-odds = list((range(1, 10, 2))
-nums = [10**exp for exp in range(5)]
-states_lower = [state.lower() for state in states]
+list(range(5))
+list(range(1, 10, 2))
+[10**exp for exp in range(5)]
+[state.lower() for state in states]

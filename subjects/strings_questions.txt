@@ -52,8 +52,8 @@ Split the string 'test' into a list where words separated by a dot are an item i
 Fill the string 'test' with zeros at the beginning, until it is 10 characters long.
 Insert variable 'user' in a string using f-string (Python 3.6 onward).
 Insert variable 'user' in a string using .format (Python 3.5 and earlier).
-Format the number 'x' to be right aligned within 10 character spaces, with scientific notation showing 2 decimal places.
-Format the number 'x' to be center aligned within 10 spaces, separate thousands with the character '_', and show 2 decimal places.
-Format the number 'x' to be left aligned within 10 spaces, fill the empty spaces with the character '*', separate thousands with the character ',' and show 2 decimal places.
-Format the integer 'x' to show its corresponding unicode character.
-Format the number 'x' to be shown as a percentage value with 4 decimal places, and a '+' sign if positive.
+Using f-string, format the number 'x' to be right aligned within 10 character spaces, with scientific notation showing 2 decimal places.
+Using f-string, format the number 'x' to be center aligned within 10 spaces, separate thousands with the character '_', and show 2 decimal places.
+Using f-string, format the number 'x' to be left aligned within 10 spaces, fill the empty spaces with the character '*', separate thousands with the character ',' and show 2 decimal places.
+Using f-string, format the integer 'x' to show its corresponding unicode character.
+Using f-string, format the number 'x' to be shown as a percentage value with 4 decimal places, and a '+' sign if positive.

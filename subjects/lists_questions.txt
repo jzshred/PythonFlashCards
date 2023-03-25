@@ -15,14 +15,14 @@ Return the last three elements from the list 'states'.
 Return a shallow copy of the list 'states'.
 Return the number of times the string 'cherry' appears in the list 'fruits'.
 Return the position of the first occurrence of the string 'cherry' in the list 'fruits'.
-Loop through all countries in the list 'countries' and print each one.
-Loop through the first two elements in the list 'countries' and print each one.
+Loop through all countries in the list 'countries' and print each one. Use 'country' as the name of each iteration and print using f-strings. Write your answer in a single line.
+Loop through the first two elements in the list 'countries' and print each one.  Use 'country' as the name of each iteration and print using f-strings. Write your answer in a single line.
 Return a copy of the list 'vowels' in ascending sorted order.
 Return a copy of the list 'vowels' in descending sorted order.
 Sort the list 'vowels' in ascending order.
 Sort the list 'vowels' in descending order.
 Reverse the order of the elements in the list 'vowels'.
-Create a list of numbers from 0 to 4, called 'nums', using the 'range' function.
-Create a list of numbers from 1 to 9, called 'odds', skipping every even number.
-Using list comprehension, create a list called 'nums' with the powers of 10 from 1 to 10000.
-Using list comprehension, create a list called 'states_lower' with lowercase names of the elements in 'states'.
+Create a list of numbers from 0 to 4 using the 'range' function.
+Create a list of numbers from 1 to 9 skipping every even number.
+Using list comprehension, create a list with the powers of 10 from 1 to 10000. Use 'exp' as the name of the exponent.
+Using list comprehension, create a list with lowercase names of the elements in 'states'. Use 'state' as the name of each iteration.

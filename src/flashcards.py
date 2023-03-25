@@ -101,10 +101,10 @@ class Flashcard:
 
     def _check_answer(self, question_number):
         answer = input()
-        answer_without_whitespaces = self._remove_whitespaces(answer)
+        parsed_answer = self._parse_answer(answer)
         correct_answer = self._answers[question_number][:-1]
-        correct_answer_without_whitespaces = self._remove_whitespaces(correct_answer)
-        if answer_without_whitespaces == correct_answer_without_whitespaces:
+        parsed_correct_answer = self._parse_answer(correct_answer)
+        if parsed_answer == parsed_correct_answer:
             print("Correct!\n")
             return "correct"
         elif answer.lower() == 'q':
@@ -114,8 +114,10 @@ class Flashcard:
             return "incorrect"
 
     @staticmethod
-    def _remove_whitespaces(text):
-        return text.replace(" ", "")
+    def _parse_answer(text):
+        text = text.replace(" ", "")
+        text = text.replace("\'", "\"")
+        return text
 
     def _compute_score(self, response):
         if response == "correct":

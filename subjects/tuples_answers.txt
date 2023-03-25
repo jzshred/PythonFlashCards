@@ -2,3 +2,4 @@
 tuple(test)
 test.count(5)
 test.index(8)
+tuple1 + tuple2
