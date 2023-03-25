@@ -1,4 +1,4 @@
-capitals = {"ak": "juneau", "al": "montgomery"}
+{"ak": "juneau", "al": "montgomery"}
 capitals.clear()
 capitals.copy()
 dict.fromkeys(x, y)

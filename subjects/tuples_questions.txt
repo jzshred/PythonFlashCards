@@ -2,3 +2,4 @@ Return a tuple from the characters 'a', 'b', 'c'.
 Return a tuple from the iterable 'test'
 Return the number of times the value 5 appears in the tuple 'test'.
 Return the position of the first occurrence of the value 8 in the tuple 'test'.
+Concatenate the elements of 'tuple1' with 'tuple2'.

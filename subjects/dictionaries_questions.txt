@@ -1,4 +1,4 @@
-Create a dictionary called 'capitals' with the key-value pairs ak-juneau and al-montgomery
+Create a dictionary with the key-value pairs ak-juneau and al-montgomery
 Remove all elements from the dictionary 'capitals'.
 Return a copy of the dictionary 'capitals'.
 Return a dictionary with an iterable 'x' specifying the keys, and 'y' specifying the values for all keys.
