@@ -1,3 +1,14 @@
-dir(obj)
+class MyClass:
+my_obj = MyClass()
+my_obj.my_method()
+my_obj.my_attrib
+def __init__(self):
+def __str__(self):
 isinstance(x, Test)
+dir(obj)
+del test.score
+del test
 issubclass(Child, Parent)
+class Circle(Shape):
+super().__init__()
+def description(self):

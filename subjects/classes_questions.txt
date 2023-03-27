@@ -1,3 +1,14 @@
-Return a list of the properties and methods of object 'obj'.
+Create a class named 'MyClass'. Do not write anything after the colon.
+Create an object named 'my_obj' of type 'MyClass'.
+The object 'my_obj' is an instance of the class 'MyClass'. Call the method 'my_method'.
+The object 'my_obj' is an instance of the class 'MyClass'. Access the attribute 'my_attrib'.
+Write the constructor method of the class 'MyClass', without any parameters. Do not write anything after the colon.
+Write the string representation method of the class 'MyClass'. Do not write anything after the colon.
 Check if 'x' is an instance of class 'Test'.
+Return a list of the properties and methods of object 'obj'.
+Delete the attribute 'score' from an instance of the object 'MyClass' named 'test'.
+Delete the instance of the object 'MyClass' named 'test'.
 Check if class 'Child' is a subclass of 'Parent'.
+Create a class named 'Circle', which will inherit the class 'Shape'. Do not write anything after the colon.
+In the class 'Circle', access the constructor method of the parent class 'Shape'.
+The class 'Shape' has a method 'description(self)'. Override this method in the child class 'Circle'. Do not write anything after the colon.
