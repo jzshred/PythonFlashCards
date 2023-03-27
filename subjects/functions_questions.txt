@@ -1,1 +1,22 @@
-What is your name?
+Create a function 'my_function' with no parameters. Do not write anything after the colon.
+Call the function 'my_function' without any arguments.
+Create a function 'my_function' with parameter 'name'. Do not write anything after the colon.
+Call the function 'my_function' with argument 'my_name'.
+Create a function 'my_function' with parameters 'name' and 'address'. Do not write anything after the colon.
+Call the function 'my_function' with arguments 'my_name' and 'my_address'.
+Create a function 'my_function' which can take an arbitrary number of arguments represented by 'args'. Do not write anything after the colon.
+The function 'my_function' computes the variable 'result'. Write the statement that goes inside 'my_function' that would return the variable 'result'.
+The function 'my_function' has parameters 'first_name' and 'last_name'. Call 'my_function' using keyword arguments 'Zane' for 'last_name' and 'Frank' for 'first_name', in that order.
+The function 'my_function' has parameters 'first_name' and 'last_name'. Write the statement that goes inside 'my_function' that would return 'first_name' and 'last_name'.
+Create a function 'my_function' which can take an arbitrary number of keyword arguments represented by 'kwargs'. Do not write anything after the colon.
+Create a function 'my_function' with parameter 'country' set to default to 'Norway'. Do not write anything after the colon.
+The function 'my_function' has no content. Write a statement that would go inside 'my_function' which would allow a call to 'my_function' without getting an error.
+Create a lambda function with parameter x, which returns x + 10.
+Create a lambda function with parameters x and y, which returns x + y.
+Import the module 'my_module'.
+Once you have imported the module 'my_module', call its function 'my_function' with no arguments.
+Import the function 'my_function' from the module 'my_module'.
+Once you have imported the function 'my_function' from the module 'my_module', call it with no arguments.
+Import the module 'my_module' and give it the alias 'mm'.
+Import functions 'get_first_name' and 'get_last_name' from module 'my_module'.
+Import all functions from module 'my_module' without having to use the module name to call the functions.

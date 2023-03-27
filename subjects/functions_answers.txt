@@ -1,1 +1,22 @@
-John
+def my_function():
+my_function()
+def my_function(name):
+my_function(my_name)
+def my_function(name, address):
+my_function(my_name, my_address)
+def my_function(*args):
+return result
+my_function(last_name="Zane", first_name="Frank")
+return (first_name, last_name)
+def my_function(**kwargs):
+def my_function(country="Norway")
+pass
+lambda x : x + 10
+lambda x, y : x + y
+import my_module
+my_module.my_function()
+from my_module import my_function
+my_function()
+import my_module as mm
+from my_module import get_first_name, get_last_name
+from my_module import *
