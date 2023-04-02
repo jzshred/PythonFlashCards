@@ -1,5 +1,6 @@
 from subject import Subject
 from random_subject import RandomSubject
+from scorecard import Scorecard
 
 
 class Flashcard:
@@ -15,8 +16,7 @@ class Flashcard:
         self._answers = []
         self._intro_displayed = False
         self._active_session = True
-        self._correct_answers = 0
-        self._incorrect_answers = 0
+        self._scorecard = Scorecard(self._subjects)
 
     def start(self):
         while self._active_session:
@@ -28,7 +28,7 @@ class Flashcard:
                 self._build_qa_session()
                 self._display_subject_title()
                 self._ask_questions()
-                self._display_score()
+                self._scorecard.print_results(self._chosen_subject)
                 self._ask_to_continue()
 
     def _display_intro(self):
@@ -65,7 +65,7 @@ class Flashcard:
 
     def _check_quit_session(self, chosen_subject):
         if chosen_subject.lower() == 'q':
-            self._display_score()
+            self._scorecard.print_results(self._chosen_subject)
             self._active_session = False
 
     def _parse_address(self):
@@ -97,7 +97,7 @@ class Flashcard:
                 self._active_session = False
                 break
             else:
-                self._compute_score(response)
+                self._scorecard.log_score(response, self._chosen_subject)
 
     def _check_answer(self, question_number):
         answer = input()
@@ -118,21 +118,6 @@ class Flashcard:
         text = text.replace(" ", "")
         text = text.replace("\'", "\"")
         return text
-
-    def _compute_score(self, response):
-        if response == "correct":
-            self._correct_answers += 1
-        elif response == "incorrect":
-            self._incorrect_answers += 1
-
-    def _display_score(self):
-        total_answers = self._correct_answers + self._incorrect_answers
-        if total_answers > 0:
-            print("--- Results ---")
-            print(f"Correct answers: {self._correct_answers}")
-            print(f"Incorrect answers: {self._incorrect_answers}")
-            accuracy = self._correct_answers / total_answers
-            print(f"Accuracy rate: {accuracy:.2%}")
 
     def _ask_to_continue(self):
         if self._active_session:
