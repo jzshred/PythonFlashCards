@@ -4,8 +4,7 @@ from flashcards import Flashcard
 
 @pytest.fixture()
 def flashcard():
-    flashcard = Flashcard()
-    return flashcard
+    return Flashcard()
 
 
 def test_start(flashcard, mocker):
@@ -16,7 +15,7 @@ def test_start(flashcard, mocker):
     mock_build_qa_session = mocker.patch.object(flashcard, '_build_qa_session')
     mock_display_subject_title = mocker.patch.object(flashcard, '_display_subject_title')
     mock_ask_questions = mocker.patch.object(flashcard, '_ask_questions')
-    mock_display_score = mocker.patch.object(flashcard, '_display_score')
+    mock_print_results = mocker.patch.object(flashcard._scorecard, 'print_results')
     mock_ask_to_continue = mocker.patch.object(flashcard, '_ask_to_continue',
                                                side_effect=lambda: setattr(flashcard, '_active_session', False))
     flashcard.start()
@@ -27,7 +26,7 @@ def test_start(flashcard, mocker):
     assert mock_build_qa_session.call_count == 1
     assert mock_display_subject_title.call_count == 1
     assert mock_ask_questions.call_count == 1
-    assert mock_display_score.call_count == 1
+    mock_print_results.assert_called_once_with(flashcard._chosen_subject)
     assert mock_ask_to_continue.call_count == 1
 
 
@@ -95,9 +94,9 @@ def test_check_valid_subject(flashcard):
 
 
 def test_check_quit_session(flashcard, mocker):
-    mock_display_score = mocker.patch.object(flashcard, '_display_score')
+    mock_print_results = mocker.patch.object(flashcard._scorecard, 'print_results')
     flashcard._check_quit_session('q')
-    assert mock_display_score.call_count == 1
+    mock_print_results.assert_called_once_with(flashcard._chosen_subject)
     assert not flashcard._active_session
 
 
@@ -140,14 +139,17 @@ def test_display_subject_title(flashcard, capsys):
 
 
 def test_ask_questions(flashcard, mocker):
+    flashcard._chosen_subject = "Test Subject"
     flashcard._questions = ["question 1\n", "question 2\n", "question 3\n"]
+    first_response = "correct"
+    second_response = "quit"
     mock_print = mocker.patch("builtins.print")
-    mock_check_answer = mocker.patch.object(flashcard, '_check_answer', side_effect=["correct", "quit"])
-    mock_compute_score = mocker.patch.object(flashcard, '_compute_score')
+    mock_check_answer = mocker.patch.object(flashcard, '_check_answer', side_effect=[first_response, second_response])
+    mock_log_score = mocker.patch.object(flashcard._scorecard, 'log_score')
     flashcard._ask_questions()
     mock_print.assert_has_calls([mocker.call("Q1. question 1"), mocker.call("Q2. question 2")])
     assert mock_check_answer.call_count == 2
-    assert mock_compute_score.call_count == 1
+    mock_log_score.assert_called_once_with(first_response, flashcard._chosen_subject)
     assert not flashcard._active_session
 
 
@@ -158,7 +160,7 @@ def test_ask_questions(flashcard, mocker):
 def test_check_answer(flashcard, mocker, mock_answer, expected_return, expected_print):
     mock_input = mocker.patch("builtins.input", return_value=mock_answer)
     mock_parse_answer = mocker.patch.object(flashcard, '_parse_answer',
-                                                  side_effect=[mock_answer, "answer1"])
+                                            side_effect=[mock_answer, "answer1"])
     question_number = 0
     flashcard._answers = ["answer 1\n", "answer 2\n", "answer 3\n"]
     mock_print = mocker.patch("builtins.print")
@@ -173,22 +175,6 @@ def test_parse_answer(flashcard):
     answer = "a, 'b', c"
     parsed_answer = flashcard._parse_answer(answer)
     assert parsed_answer == "a,\"b\",c"
-
-
-@pytest.mark.parametrize("answer, expected_correct_answers, expected_incorrect_answers",
-                         [("correct", 1, 0), ("incorrect", 0, 1)])
-def test_compute_score(flashcard, answer, expected_correct_answers, expected_incorrect_answers):
-    flashcard._compute_score(answer)
-    assert flashcard._correct_answers == expected_correct_answers
-    assert flashcard._incorrect_answers == expected_incorrect_answers
-
-
-def test_display_score(flashcard, capsys):
-    flashcard._correct_answers = 1
-    flashcard._incorrect_answers = 1
-    flashcard._display_score()
-    stdout, stderr = capsys.readouterr()
-    assert stdout == "--- Results ---\nCorrect answers: 1\nIncorrect answers: 1\nAccuracy rate: 50.00%\n"
 
 
 @pytest.mark.parametrize("mock_input, expected_chosen_subject, expected_active_session",
