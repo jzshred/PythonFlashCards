@@ -11,11 +11,13 @@ You can clone this repository locally and start working on the project. The main
 - _flashcards.py_: contains the class for handling the Q&A session.
 - _subject.py_: contains the class for holding questions and answers from a particular subject.
 - _random_subject.py_: contains the class for holding questions and answers from random subjects.
+- _scorecard.py_: contains the class for holding scores for Q&A sessions.
 
 All tests are located in the _tests_ folder:
 - _test_flashcards.py_: tests to check that the methods in _flashcards.py_ run correctly.
 - _test_subject.py_: tests to check that the methods in _subject.py_ run correctly. 
-- _test_random_subject.py_: tests to check that the methods in _random_subject.py_ run correctly. 
+- _test_random_subject.py_: tests to check that the methods in _random_subject.py_ run correctly.
+- _test_scorecard.py_: tests to check that the methods in _scorecard.py_ run correctly.
 
 Testing requires __pytest__ version 7.2.1 or above, __pytest-cov__ version 4.0.0 or above,
 and __pytest-mock__ version 3.10.0 or above.

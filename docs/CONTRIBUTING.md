@@ -18,7 +18,7 @@ To add a new subject, create two text files in the _subjects_ folder with the su
 
 ### Adding new features
 
-Add new features that you consider would be useful to the user. This repo follows TDD, so if you would like to add new features to the code, please add the corresponding tests.
+Add new features that you consider would be useful to the user, or features that have been included in the _issues_ section of this repo and are still open. This repo follows TDD, so if you would like to add new features to the code, please add the corresponding tests.
 
 ### Reporting bugs
 
