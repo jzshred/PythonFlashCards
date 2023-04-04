@@ -10,7 +10,7 @@ The function 'my_function' has parameters 'first_name' and 'last_name'. Call 'my
 The function 'my_function' has parameters 'first_name' and 'last_name'. Write the statement that goes inside 'my_function' that would return 'first_name' and 'last_name'.
 Create a function 'my_function' which can take an arbitrary number of keyword arguments represented by 'kwargs'. Do not write anything after the colon.
 Create a function 'my_function' with parameter 'country' set to default to 'Norway'. Do not write anything after the colon.
-The function 'my_function' has no content. Write a statement that would go inside 'my_function' which would allow a call to 'my_function' without getting an error.
+Write the statement that would go inside 'my_function' which would allow the function to do nothing.
 Create a lambda function with parameter x, which returns x + 10.
 Create a lambda function with parameters x and y, which returns x + y.
 Import the module 'my_module'.

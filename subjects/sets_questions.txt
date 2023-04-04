@@ -8,7 +8,7 @@ Return the items that are exclusive to set 'x' when comparing it to set 'y'.
 Remove the items from set 'x' that appear in set 'y'.
 Remove the item 'banana' from the set 'fruits'. Do not raise an error if the item is not part of the set.
 Remove the item 'banana' from the set 'fruits'. Raise an error if the item is not part of the set.
-Remove a random item from the set 'fruits'.
+Remove and return a random item from the set 'fruits'.
 Return the intersection between sets 'x' and 'y'.
 Return the intersection between sets 'x', 'y' and 'z'.
 Update the set 'x' so it contains only the items that intersect with sets 'y' and 'z'.

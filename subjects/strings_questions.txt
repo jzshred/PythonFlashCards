@@ -5,7 +5,7 @@ Return the number of times the value 'apple' appears in the string 'test'.
 Return the number of times the value 'apple' appears in the string 'test' between characters 10 to 24.
 Change the case of a string called 'name' to uppercase.
 Change the string 'name' to lowercase.
-Change the string 'name' to lowercase considering unicode characters.
+Change the string 'name' to lowercase considering Unicode characters.
 Change the string 'name' so only the first letter is uppercase.
 Change to uppercase all the first letters from the string 'name'.
 On string 'name', change uppercase to lowercase and vice versa.
