@@ -1,6 +1,6 @@
 Create a class named 'MyClass'. Do not write anything after the colon.
-Create an object named 'my_obj' of type 'MyClass'.
-The object 'my_obj' is an instance of the class 'MyClass'. Call the method 'my_method'.
+Create an instance of the class 'MyClass' named 'my_obj'.
+The object 'my_obj' is an instance of the class 'MyClass'. Call the method 'my_method' with no arguments.
 The object 'my_obj' is an instance of the class 'MyClass'. Access the attribute 'my_attrib'.
 Write the constructor method of the class 'MyClass', without any parameters. Do not write anything after the colon.
 Write the string representation method of the class 'MyClass'. Do not write anything after the colon.
