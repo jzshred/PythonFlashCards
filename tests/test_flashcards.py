@@ -138,10 +138,12 @@ def test_display_subject_title(flashcard, capsys):
     assert stdout == "\n--- Test Subject: 0 questions ---\n"
 
 
-def test_ask_questions(flashcard, mocker):
+@pytest.mark.parametrize("mock_response",
+                         ["correct", "incorrect"])
+def test_ask_questions(flashcard, mocker, mock_response):
     flashcard._chosen_subject = "Test Subject"
     flashcard._questions = ["question 1\n", "question 2\n", "question 3\n"]
-    first_response = "correct"
+    first_response = mock_response
     second_response = "quit"
     mock_print = mocker.patch("builtins.print")
     mock_check_answer = mocker.patch.object(flashcard, '_check_answer', side_effect=[first_response, second_response])
@@ -150,7 +152,8 @@ def test_ask_questions(flashcard, mocker):
     mock_print.assert_has_calls([mocker.call("Q1. question 1"), mocker.call("Q2. question 2")])
     assert mock_check_answer.call_count == 2
     mock_log_score.assert_called_once_with(first_response, flashcard._chosen_subject)
-    assert not flashcard._active_session
+    if mock_response == "incorrect":
+        assert flashcard._questions == ["question 3\n", "question 1\n"]
 
 
 @pytest.mark.parametrize("mock_answer, expected_return, expected_print",
@@ -161,14 +164,15 @@ def test_check_answer(flashcard, mocker, mock_answer, expected_return, expected_
     mock_input = mocker.patch("builtins.input", return_value=mock_answer)
     mock_parse_answer = mocker.patch.object(flashcard, '_parse_answer',
                                             side_effect=[mock_answer, "answer1"])
-    question_number = 0
     flashcard._answers = ["answer 1\n", "answer 2\n", "answer 3\n"]
     mock_print = mocker.patch("builtins.print")
-    assert flashcard._check_answer(question_number) == expected_return
+    assert flashcard._check_answer() == expected_return
     assert mock_input.call_count == 1
     assert mock_parse_answer.call_count == 2
     if expected_print is not None:
         mock_print.assert_called_once_with(expected_print)
+    if expected_return == "incorrect":
+        assert flashcard._answers == ["answer 2\n", "answer 3\n", "answer 1\n"]
 
 
 def test_parse_answer(flashcard):

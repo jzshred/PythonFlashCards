@@ -90,27 +90,33 @@ class Flashcard:
         print(f"\n--- {self._chosen_subject}: {len(self._questions)} questions ---")
 
     def _ask_questions(self):
-        for question_number, question in enumerate(self._questions):
-            print(f"Q{question_number + 1}. {question[:-1]}")
-            response = self._check_answer(question_number)
-            if response == "quit":
-                self._active_session = False
-                break
-            else:
+        counter = 1
+        while self._questions:
+            question = self._questions.pop(0)
+            print(f"Q{counter}. {question[:-1]}")
+            response = self._check_answer()
+            counter += 1
+            if response == "correct":
                 self._scorecard.log_score(response, self._chosen_subject)
+            elif response == "incorrect":
+                self._scorecard.log_score(response, self._chosen_subject)
+                self._questions.append(question)
+            elif response == "quit":
+                break
 
-    def _check_answer(self, question_number):
+    def _check_answer(self):
         answer = input()
         parsed_answer = self._parse_answer(answer)
-        correct_answer = self._answers[question_number][:-1]
-        parsed_correct_answer = self._parse_answer(correct_answer)
+        correct_answer = self._answers.pop(0)
+        parsed_correct_answer = self._parse_answer(correct_answer[:-1])
         if parsed_answer == parsed_correct_answer:
             print("Correct!\n")
             return "correct"
         elif answer.lower() == 'q':
             return "quit"
         else:
-            print(f"Incorrect. The correct answer is:\n{correct_answer}\n")
+            print(f"Incorrect. The correct answer is:\n{correct_answer[:-1]}\n")
+            self._answers.append(correct_answer)
             return "incorrect"
 
     @staticmethod
